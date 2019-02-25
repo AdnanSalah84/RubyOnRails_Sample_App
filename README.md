@@ -65,3 +65,24 @@ $ User.create(name: "bob smith", email: "bsmith@example.com", password: "test123
 >> user = User.find_by(email: "bsmith@example.com")
 >> user.password_digest
 >> user.authenticate("not_the_right_password")
+
+>> Rails.env
+
+As with the console, development is the default environment for the Rails server, but you can also run it in a different environment:
+
+$ rails server --environment production
+
+If you view your app running in production, it won’t work without a production database, which we can create by running rails db:migrate in production:
+
+  $ rails db:migrate RAILS_ENV=production
+
+
+>> email = "MHARTL@example.COM"
+>> Digest::MD5::hexdigest(email.downcase)
+
+
+Update First ID:
+>> user = User.first
+>> user.update_attributes(name: "Example User", email: "example@railstutorial.org",
+                        password: "foobar",
+                        password_confirmation: "foobar")
