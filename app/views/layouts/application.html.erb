@@ -15,6 +15,14 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <!-- where alert-<%= message_type  %> 
+          makes a CSS class corresponding to the type of message, 
+          so that for a :success message the class is
+          alert-success
+        -->
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
